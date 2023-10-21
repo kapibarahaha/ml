@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 from xgboost import XGBClassifier
 from sklearn.ensemble import VotingClassifier
+from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import RandomOverSampler
 
 # อ่านข้อมูล
@@ -103,8 +104,6 @@ if st.button("ส่งข้อมูล"):
     user_input_df['Color'] = label_encoders['Color'].transform(user_input_df['Color'])
     user_input_df['Smell'] = label_encoders['Smell'].transform(user_input_df['Smell'])
     
-    # ใช้ X_train.columns เพื่อตรวจสอบลำดับคอลัมน์ที่สอดคล้องกัน
-    
     # เพิ่มคอลัมน์ 'fish' จาก DataFrame หลัก (X)
     user_input_df['fish'] = X['fish']
     
@@ -128,5 +127,3 @@ if st.button("ส่งข้อมูล"):
     
     st.write("ผลการทำนายคุณภาพของน้ำ:", y1_pred_labels[0])
     st.write("ผลการทำนายจำนวนปลา:", y2_pred_labels[0])
-
-# อื่น ๆ ที่คุณต้องการแสดงผล
